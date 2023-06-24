@@ -1,0 +1,43 @@
+{
+    "name": "davelima/focus-nfe-php",
+    "description": "FocusNFE PHP client",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Davelima\\FocusNfePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Lima",
+            "email": "dave@davidlima.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/http-client": "^6.3",
+        "ext-http": "*",
+        "symfony/validator": "^6.3",
+        "symfony/yaml": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.2",
+        "phpmetrics/phpmetrics": "^2.8",
+        "phpstan/phpstan": "^1.10"
+    },
+    "scripts": {
+        "test": [
+            "./vendor/bin/phpunit -c phpunit.xml tests --log-junit tests/coverage/junit.xml"
+        ],
+        "test-with-coverage": [
+            "XDEBUG_MODE=coverage ./vendor/bin/phpunit -c phpunit.xml --colors --testdox --coverage-html=tests/coverage/ tests --log-junit tests/coverage/junit.xml"
+        ],
+        "phpmetrics": [
+            "./vendor/bin/phpmetrics --report-html=phpmetrics --exclude=\"vendor,tests\" --junit=tests/coverage/junit.xml ./"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse src --level=9"
+        ]
+    }
+}

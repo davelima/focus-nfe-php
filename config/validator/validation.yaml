@@ -1,0 +1,16 @@
+Davelima\FocusNfePhp\Document\Nfse:
+    properties:
+        dataEmissao:
+            -   NotNull: ~
+        incentivadorCultural:
+            -   NotNull: ~
+        naturezaOperacao:
+            -   NotNull: ~
+        optanteSimplesNacional:
+            -   NotNull: ~
+        prestador:
+            -   NotNull: ~
+        tomador:
+            -   NotNull: ~
+        servico:
+            -   NotNull: ~
