@@ -67,7 +67,7 @@ $nfse = new Nfse(
     referencia:             'REF_TEST',
     dataEmissao:            $date,
     incentivadorCultural:   false,
-    naturezaOperacao:       NaturezaOperacao::TRIBUTACAO_NO_MUNICIPIO,
+    naturezaOperacao:       NaturezaOperacao::TributacaoNoMunicipio,
     optanteSimplesNacional: true,
     prestador:              $prestador,
     tomador:                $tomador,

@@ -57,7 +57,7 @@ readonly class Nfse implements DocumentInterface
     /**
      * @return Status
      *
-     * @codeCoverageIgnore 
+     * @codeCoverageIgnore
      */
     public function getStatus(): Status
     {
