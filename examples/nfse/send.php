@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../vendor/autoload.php');
 
 use Davelima\FocusNfePhp\Client\FocusClient;
 use Davelima\FocusNfePhp\Document\Nfse;
@@ -8,8 +8,7 @@ use Davelima\FocusNfePhp\Document\Nfse;
 
 $client = new FocusClient(
     environment: FocusClient::ENV_HOMOLOG,
-    login:       'aaa',
-    password:    'bbb'
+    token:       'TOKEN_FOCUS_NFE'
 );
 
 $nfse = new Nfse(

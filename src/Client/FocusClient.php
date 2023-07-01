@@ -39,16 +39,14 @@ class FocusClient
 
     /**
      * @param string $environment
-     * @param string $login
-     * @param string $password
+     * @param string $token
      */
     public function __construct(
         string $environment,
-        string $login,
-        string $password,
+        string $token
     ) {
         $this->httpClient = HttpClient::createForBaseUri($environment)
-                                      ->withOptions(['auth_basic' => [$login, $password]]);
+                                      ->withOptions(['auth_basic' => [$token, '']]);
 
         $this->validator = Validation::createValidatorBuilder()
                                      ->addYamlMapping(__DIR__ . '/../../config/validator/validation.yaml')

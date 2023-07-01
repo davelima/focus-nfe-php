@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../vendor/autoload.php');
 
 use Davelima\FocusNfePhp\Client\FocusClient;
 use Davelima\FocusNfePhp\Document\Nfse;
@@ -13,8 +13,7 @@ use Davelima\FocusNfePhp\Model\Tomador;
 
 $client = new FocusClient(
     environment: FocusClient::ENV_HOMOLOG,
-    login:       'aaa',
-    password:    'bbb'
+    token:       'TOKEN_FOCUS_NFE'
 );
 
 $date = new DateTime('2022-10-10 14:45:00+0300');
