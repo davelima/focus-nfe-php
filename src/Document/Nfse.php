@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Davelima\FocusNfePhp\Document;
 
 use DateTime;
-use Davelima\FocusNfePhp\Enum\NaturezaOperacao;
 use Davelima\FocusNfePhp\Interface\DocumentInterface;
+use Davelima\FocusNfePhp\Enum\{NaturezaOperacao, Status};
 use Davelima\FocusNfePhp\Model\{Prestador, Servico, Tomador};
 
 readonly class Nfse implements DocumentInterface
@@ -19,7 +19,8 @@ readonly class Nfse implements DocumentInterface
         private ?bool $optanteSimplesNacional = null,
         private ?Prestador $prestador = null,
         private ?Tomador $tomador = null,
-        private ?Servico $servico = null
+        private ?Servico $servico = null,
+        private Status $status = Status::Pendente
     ) {
     }
 
@@ -51,5 +52,15 @@ readonly class Nfse implements DocumentInterface
         };
 
         return '/v2/nfse' . $reference;
+    }
+
+    /**
+     * @return Status
+     *
+     * @codeCoverageIgnore 
+     */
+    public function getStatus(): Status
+    {
+        return $this->status;
     }
 }
