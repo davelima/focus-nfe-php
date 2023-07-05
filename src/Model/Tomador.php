@@ -7,10 +7,11 @@ namespace Davelima\FocusNfePhp\Model;
 readonly class Tomador
 {
     public function __construct(
-        private string $cnpj,
         private string $razaoSocial,
         private string $email,
-        private Endereco $endereco
+        private Endereco $endereco,
+        private ?string $cnpj = null,
+        private ?string $cpf = null
     ) {
     }
 
@@ -19,11 +20,20 @@ readonly class Tomador
      */
     public function getData(): array
     {
-        return [
-            'cnpj' => $this->cnpj,
+        $data = [
             'razao_social' => $this->razaoSocial,
             'email' => $this->email,
             'endereco' => $this->endereco->getData()
         ];
+
+        if ($this->cnpj) {
+            $data['cnpj'] = $this->cnpj;
+        }
+
+        if ($this->cpf) {
+            $data['cpf'] = $this->cpf;
+        }
+
+        return $data;
     }
 }

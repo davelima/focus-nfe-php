@@ -31,10 +31,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
@@ -110,10 +110,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
@@ -193,10 +193,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
@@ -304,10 +304,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
@@ -413,10 +413,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
@@ -479,10 +479,10 @@ final class NfseTest extends TestCase
         );
 
         $tomador = new Tomador(
-            cnpj:        '11111111111111',
             razaoSocial: 'Tomador Teste LTDA',
             email:       'tomador@test.com',
-            endereco:    $tomadorEndereco
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
         );
 
         $servico = new Servico(
