@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Davelima\FocusNfePhp\Model;
 
-readonly class Prestador
+class Prestador
 {
     public function __construct(
         private string $cnpj,

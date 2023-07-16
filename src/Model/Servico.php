@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Davelima\FocusNfePhp\Model;
 
-readonly class Servico
+class Servico
 {
     /**
      * @param float $valorServicos

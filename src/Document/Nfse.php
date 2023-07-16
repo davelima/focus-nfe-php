@@ -9,7 +9,7 @@ use Davelima\FocusNfePhp\Interface\DocumentInterface;
 use Davelima\FocusNfePhp\Model\{Prestador, Servico, Tomador};
 use Davelima\FocusNfePhp\Enum\{NaturezaOperacao, RegimeEspecialTributacao, Status};
 
-readonly class Nfse implements DocumentInterface
+class Nfse implements DocumentInterface
 {
     public function __construct(
         private string $referencia,

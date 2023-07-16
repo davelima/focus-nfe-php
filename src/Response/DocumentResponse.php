@@ -9,7 +9,7 @@ use Davelima\FocusNfePhp\Interface\{DocumentInterface, ResponseInterface};
 /**
  * @codeCoverageIgnore
  */
-readonly class DocumentResponse implements ResponseInterface
+class DocumentResponse implements ResponseInterface
 {
     /**
      * @param int $status

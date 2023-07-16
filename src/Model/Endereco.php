@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Davelima\FocusNfePhp\Model;
 
-readonly class Endereco
+class Endereco
 {
     public function __construct(
         private string $bairro,

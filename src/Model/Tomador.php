@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Davelima\FocusNfePhp\Model;
 
-readonly class Tomador
+class Tomador
 {
     public function __construct(
         private string $razaoSocial,
