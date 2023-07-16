@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Document;
 
 use DateTime;
+use Davelima\FocusNfePhp\Enum\RegimeEspecialTributacao;
 use PHPUnit\Framework\TestCase;
 use Davelima\FocusNfePhp\Document\Nfse;
 use Davelima\FocusNfePhp\Enum\NaturezaOperacao;
@@ -224,14 +225,19 @@ final class NfseTest extends TestCase
         );
 
         $nfse = new Nfse(
-            referencia:             'REF_TEST',
-            dataEmissao:            $date,
-            incentivadorCultural:   false,
-            naturezaOperacao:       NaturezaOperacao::TributacaoNoMunicipio,
-            optanteSimplesNacional: true,
-            prestador:              $prestador,
-            tomador:                $tomador,
-            servico:                $servico
+            referencia:               'REF_TEST',
+            dataEmissao:              $date,
+            incentivadorCultural:     false,
+            naturezaOperacao:         NaturezaOperacao::TributacaoNoMunicipio,
+            optanteSimplesNacional:   true,
+            prestador:                $prestador,
+            tomador:                  $tomador,
+            servico:                  $servico,
+            regimeEspecialTributacao: RegimeEspecialTributacao::Estimativa,
+            codigoObra:               '123',
+            art:                      '123',
+            serieRpsSubstituido:      '123456',
+            tipoRpsSubstituido:       '123456'
         );
 
         $expected = [
@@ -280,6 +286,11 @@ final class NfseTest extends TestCase
                 'percentual_total_tributos' => 14.0,
                 'fonte_total_tributos' => 'Fonte Total Tributos Teste'
             ),
+            'regime_especial_tributacao' => '2',
+            'codigo_obra' => '123',
+            'art' => '123',
+            'serie_rps_substituido' => '123456',
+            'tipo_rps_substituido' => '123456'
         ];
 
         $this->assertEquals($expected, $nfse->getData());

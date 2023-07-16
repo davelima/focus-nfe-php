@@ -6,8 +6,8 @@ namespace Davelima\FocusNfePhp\Document;
 
 use DateTime;
 use Davelima\FocusNfePhp\Interface\DocumentInterface;
-use Davelima\FocusNfePhp\Enum\{NaturezaOperacao, Status};
 use Davelima\FocusNfePhp\Model\{Prestador, Servico, Tomador};
+use Davelima\FocusNfePhp\Enum\{NaturezaOperacao, RegimeEspecialTributacao, Status};
 
 readonly class Nfse implements DocumentInterface
 {
@@ -20,6 +20,11 @@ readonly class Nfse implements DocumentInterface
         private ?Prestador $prestador = null,
         private ?Tomador $tomador = null,
         private ?Servico $servico = null,
+        private ?RegimeEspecialTributacao $regimeEspecialTributacao = null,
+        private ?string $codigoObra = null,
+        private ?string $art = null,
+        private ?string $serieRpsSubstituido = null,
+        private ?string $tipoRpsSubstituido = null,
         private Status $status = Status::Pendente
     ) {
     }
@@ -29,15 +34,22 @@ readonly class Nfse implements DocumentInterface
      */
     public function getData(): array
     {
-        return [
+        $result = [
             'data_emissao' => $this->dataEmissao?->format('c'),
             'incentivador_cultural' => $this->incentivadorCultural,
             'natureza_operacao' => $this->naturezaOperacao?->value,
             'optante_simples_nacional' => $this->optanteSimplesNacional,
+            'regime_especial_tributacao' => $this->regimeEspecialTributacao?->value,
+            'codigo_obra' => $this->codigoObra,
+            'art' => $this->art,
+            'serie_rps_substituido' => $this->serieRpsSubstituido,
+            'tipo_rps_substituido' => $this->tipoRpsSubstituido,
             'prestador' => $this->prestador?->getData(),
             'tomador' => $this->tomador?->getData(),
             'servico' => $this->servico?->getData()
         ];
+
+        return array_filter($result, function($value) {return !is_null($value);});
     }
 
     /**
