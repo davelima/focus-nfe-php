@@ -23,12 +23,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -102,12 +102,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -185,12 +185,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -306,12 +306,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -415,12 +415,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -481,12 +481,12 @@ final class NfseTest extends TestCase
         );
 
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -535,5 +535,78 @@ final class NfseTest extends TestCase
         $authorizePath = $nfse->getDocumentPath(false);
 
         $this->assertSame($expected, $authorizePath);
+    }
+
+    public function testCanGetInternationalNfseData(): void
+    {
+        $date = new DateTime('2022-10-10 14:45:00+0300');
+        $prestador = new Prestador(
+            cnpj:               '00000000000000',
+            inscricaoMunicipal: '12345',
+            codigoMunicipio:    '1234567'
+        );
+
+        $tomadorEndereco = new Endereco(
+            logradouro:      'Rua do Teste',
+            numero:          123,
+            uf:              'SP',
+        );
+
+        $tomador = new Tomador(
+            razaoSocial: 'Tomador Teste LTDA',
+            email:       'tomador@test.com',
+            endereco:    $tomadorEndereco,
+            cnpj:        '11111111111111'
+        );
+
+        $servico = new Servico(
+            valorServicos:    1.50,
+            issRetido:        true,
+            itemListaServico: '116',
+            discriminacao:    'Serviço teste',
+            codigoMunicipio:  '8765432'
+        );
+
+        $nfse = new Nfse(
+            referencia:             'REF_TEST',
+            dataEmissao:            $date,
+            incentivadorCultural:   false,
+            naturezaOperacao:       NaturezaOperacao::TributacaoNoMunicipio,
+            optanteSimplesNacional: true,
+            prestador:              $prestador,
+            tomador:                $tomador,
+            servico:                $servico
+        );
+
+        $expected = [
+            'data_emissao' => '2022-10-10T14:45:00+03:00',
+            'incentivador_cultural' => false,
+            'natureza_operacao' => 1,
+            'optante_simples_nacional' => true,
+            'prestador' => [
+                'cnpj' => '00000000000000',
+                'inscricao_municipal' => '12345',
+                'codigo_municipio' => '1234567'
+            ],
+            'tomador' => [
+                'cnpj' => '11111111111111',
+                'razao_social' => 'Tomador Teste LTDA',
+                'email' => 'tomador@test.com',
+                'endereco' => [
+                    'logradouro' => 'Rua do Teste',
+                    'numero' => 123,
+                    'uf' => 'SP'
+                ]
+            ],
+            'servico' => array(
+                'discriminacao' => 'Serviço teste',
+                'iss_retido' => true,
+                'item_lista_servico' => '116',
+                'valor_servicos' => 1.50,
+                'codigo_municipio' => '8765432'
+            ),
+        ];
+
+        $this->assertEquals($expected, $nfse->getData());
     }
 }

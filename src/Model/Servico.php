@@ -11,7 +11,7 @@ class Servico
      * @param bool $issRetido
      * @param string $itemListaServico
      * @param string $discriminacao
-     * @param string $codigoMunicipio
+     * @param string|null $codigoMunicipio
      * @param float|null $valorDeducoes
      * @param float|null $valorPis
      * @param float|null $valorCofins
@@ -34,7 +34,7 @@ class Servico
         private bool $issRetido,
         private string $itemListaServico,
         private string $discriminacao,
-        private string $codigoMunicipio,
+        private ?string $codigoMunicipio = null,
         private ?float $valorDeducoes = 0,
         private ?float $valorPis = 0,
         private ?float $valorCofins = 0,

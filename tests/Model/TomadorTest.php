@@ -14,12 +14,12 @@ final class TomadorTest extends TestCase
     public function testCanGetCnpjData(): void
     {
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
@@ -37,12 +37,12 @@ final class TomadorTest extends TestCase
     public function testCanGetCpfData(): void
     {
         $tomadorEndereco = new Endereco(
-            bairro:          'Bairro teste',
-            cep:             '00000000',
-            codigoMunicipio: '7654321',
             logradouro:      'Rua do Teste',
             numero:          123,
-            uf:              'SP'
+            uf:              'SP',
+            codigoMunicipio: '7654321',
+            bairro:          'Bairro teste',
+            cep:             '00000000'
         );
 
         $tomador = new Tomador(
