@@ -8,7 +8,7 @@ class Prestador
 {
     public function __construct(
         private string $cnpj,
-        private string $inscricaoMunicipal,
+        private ?string $inscricaoMunicipal,
         private string $codigoMunicipio
     ) {
     }
