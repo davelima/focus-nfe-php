@@ -91,7 +91,13 @@ class Servico
             $result[$key] = $this->{$label};
         });
 
-        return array_filter($result);
+        $result = array_filter($result);
+
+        if (!isset($result['iss_retido'])) {
+            $result['iss_retido'] = $this->issRetido;
+        }
+
+        return $result;
     }
 }
 
