@@ -102,7 +102,6 @@ class FocusClient
     {
         $request = $this->httpClient->request('DELETE', $document->getDocumentPath(useQueryString: false), [
             'headers' => ['Content-Type' => 'application/json'],
-            'body' => json_encode($document->getData())
         ]);
 
         $content = (array)json_decode($request->getContent(), true);
